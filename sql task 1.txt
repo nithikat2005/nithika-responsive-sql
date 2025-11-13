@@ -1,0 +1,62 @@
+
+CREATE DATABASE library_db;
+
+USE library_db;
+
+
+CREATE TABLE Students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    course VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15)
+);
+
+
+CREATE TABLE Books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    author VARCHAR(100),
+    category VARCHAR(50),
+    available_copies INT DEFAULT 1
+);
+
+
+CREATE TABLE Issue_Records (
+    issue_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    book_id INT,
+    issue_date DATE,
+    return_date DATE,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
+
+
+INSERT INTO Students (name, course, email, phone)
+VALUES 
+('Nithika M', 'MCA', 'nithimuthu015@gmail.com', '8015728120'),
+('Priya S', 'BCA', 'priya@gmail.com', '9876543210'),
+('Ananya K', 'BSc CS', 'ananya@gmail.com', '9090876543');
+
+
+INSERT INTO Books (title, author, category, available_copies)
+VALUES 
+('Database Systems', 'Elmasri', 'Education', 5),
+('HTML & CSS Design', 'Jon Duckett', 'Web Development', 3),
+('Python Programming', 'Mark Lutz', 'Programming', 4),
+('Data Structures', 'Seymour Lipschutz', 'Education', 2);
+
+INSERT INTO Issue_Records (student_id, book_id, issue_date, return_date)
+VALUES 
+(1, 1, '2025-11-01', '2025-11-10'),
+(2, 3, '2025-11-05', NULL),
+(3, 2, '2025-11-06', '2025-11-12');
+
+
+SHOW TABLES;
+
+
+SELECT * FROM Students;
+SELECT * FROM Books;
+SELECT * FROM Issue_Records;
