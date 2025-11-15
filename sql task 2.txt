@@ -1,0 +1,26 @@
+
+
+INSERT INTO students (student_id, student_name, department, email)
+VALUES 
+(1, 'Nithika M', 'MCA', 'nithika@example.com'),
+(2, 'Ananya', 'BCA', NULL),           
+(3, 'Kavin', 'MCA', DEFAULT);         
+
+
+INSERT INTO students (student_name, department)
+VALUES ('Ragul', 'MBA');              
+
+
+UPDATE students
+SET email = 'updatedmail@example.com'
+WHERE student_id = 2;
+
+
+DELETE FROM students
+WHERE student_id = 3;
+
+
+SELECT * FROM students;
+
+
+
